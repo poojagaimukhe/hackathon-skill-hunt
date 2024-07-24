@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan("com.hackathon.shillhunt")
+@ComponentScan("com.hackathon.skillhunt")
 public class SkillHuntApplication {
 	private static final Logger log = LoggerFactory.getLogger(SkillHuntApplication.class);
 	public static void main(String[] args) {
