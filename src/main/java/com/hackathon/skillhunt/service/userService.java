@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class userService {
     @Autowired
@@ -39,6 +41,10 @@ public class userService {
 
 
     public String addUser(UserInfo userInfo) {
+        userInfo.setCreatedBy(userInfo.getUsername());
+        userInfo.setCreatedDate(LocalDateTime.now());
+        userInfo.setUpdatedBy(userInfo.getUsername());
+        userInfo.setUpdatedDate(LocalDateTime.now());
         userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
         repository.save(userInfo);
         return "user added to system ";
