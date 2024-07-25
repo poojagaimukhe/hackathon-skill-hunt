@@ -36,7 +36,7 @@ public class JobPostService {
         try{
             Integer userId = this.getUserId(createJobPostDTO.getPostedBy());
             JobPostEntity entity = new JobPostEntity();
-            if(createJobPostDTO.getId() != null) {
+             if(createJobPostDTO.getId() != null) {
                 Integer val = Integer.valueOf(createJobPostDTO.getId().intValue());
                 Optional<JobPostEntity> byId = jobPostRepository.findById(val);
 
