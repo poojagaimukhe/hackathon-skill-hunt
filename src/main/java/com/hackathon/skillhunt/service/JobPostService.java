@@ -35,9 +35,13 @@ public class JobPostService {
     public String createJobPost(CreateJobPostDTO createJobPostDTO) {
         try{
             JobPostEntity entity = new JobPostEntity();
-            Optional<JobPostEntity> byId = jobPostRepository.findById(createJobPostDTO.getId().intValue());
-            if(byId != null && byId.get() != null){
-                entity.setId(byId.get().getId());
+             if(createJobPostDTO.getId() != null) {
+                Integer val = Integer.valueOf(createJobPostDTO.getId().intValue());
+                Optional<JobPostEntity> byId = jobPostRepository.findById(val);
+
+                if (byId != null && byId.get() != null) {
+                    entity.setId(byId.get().getId());
+                }
             }
             BeanUtils.copyProperties(createJobPostDTO,entity);
             entity.setCreatedBy("user");
