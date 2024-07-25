@@ -73,18 +73,19 @@ public class JobPostService {
     }
 
 
-    public List<JobPostEntity> getAllJobPost(){
+    public List<CreateJobPostDTO> getAllJobPost(){
         List<JobPostEntity> list = new ArrayList<>();
+        List<CreateJobPostDTO> jobPostDTO = null;
         try{
             list = jobPostRepository.findAll();
             if(list != null && !list.isEmpty()){
-               this.getJobPostDTO(list);
+                jobPostDTO = this.getJobPostDTO(list);
             }
         }catch (Exception e){
             e.printStackTrace();
         }
 
-        return list;
+        return jobPostDTO;
     }
 
     private List<CreateJobPostDTO> getJobPostDTO(List<JobPostEntity> listOfJobPostEntity) throws Exception {
@@ -97,20 +98,20 @@ public class JobPostService {
             dto.setPostedBy(entity.getPostedBy());
             dto.setTotalExperience(entity.getTotalExperience().longValue());
             dto.setTitle(entity.getTitle());
-            dto.setMatch(this.calculateSkillMatch());
+
             dto.setUserId(entity.getUserId());
             SkillDetailsDTO skillDto = new SkillDetailsDTO();
-
             List<SkillDetailsDTO> skillDataList = mapper.readValue(entity.getSkillDetails().toString(), new TypeReference<List<SkillDetailsDTO>>(){});
             if(skillDataList != null && !skillDataList.isEmpty()){
                 dto.setSkillDetails(skillDataList);
             }
+            dto.setMatch(this.calculateSkillMatch(skillDataList));
             list.add(dto);
         }
         return list;
     }
 
-    private Long calculateSkillMatch() {
+    private Long calculateSkillMatch(List<SkillDetailsDTO> skillDataList) {
         return 10l;
     }
 

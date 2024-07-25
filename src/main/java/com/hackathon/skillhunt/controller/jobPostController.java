@@ -30,8 +30,8 @@ public class jobPostController {
     }
 
     @GetMapping("/getJobPosts")
-    @PreAuthorize("hasAuthority('admin')")
-    public  List<JobPostEntity> getJobPosts(){
+    //@PreAuthorize("hasAuthority('admin')")
+    public  List<CreateJobPostDTO> getJobPosts(){
         return jobPostService.getAllJobPost();
     }
 

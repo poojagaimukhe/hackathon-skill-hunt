@@ -41,6 +41,7 @@ public class userService {
 
 
     public String addUser(UserInfo userInfo) {
+        userInfo.setIsDeleted("N");
         userInfo.setCreatedBy(userInfo.getUsername());
         userInfo.setCreatedDate(LocalDateTime.now());
         userInfo.setUpdatedBy(userInfo.getUsername());
