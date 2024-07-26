@@ -9,10 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.hackathon</groupId>
-	<artifactId>skillHunt</artifactId>
+	<artifactId>hackathon-skill-hunt</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>skillHunt</name>
+	<name>hackathon-skill-hunt</name>
 	<description>Demo project for Spring Boot</description>
+	<packaging>jar</packaging>
 	<url/>
 	<licenses>
 		<license/>
@@ -78,6 +79,13 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.cloud.sql/postgres-socket-factory -->
+		<dependency>
+			<groupId>com.google.cloud.sql</groupId>
+			<artifactId>postgres-socket-factory</artifactId>
+			<version>1.19.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
