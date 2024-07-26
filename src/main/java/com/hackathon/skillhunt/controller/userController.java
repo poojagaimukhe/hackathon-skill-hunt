@@ -1,6 +1,7 @@
 package com.hackathon.skillhunt.controller;
 
 import com.hackathon.skillhunt.dto.AuthRequest;
+import com.hackathon.skillhunt.entity.SkillsMaster;
 import com.hackathon.skillhunt.entity.UserInfo;
 import com.hackathon.skillhunt.service.JwtService;
 import com.hackathon.skillhunt.service.userService;
@@ -12,8 +13,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/users")
+@RequestMapping("api/users")
 public class userController {
 
     @Autowired
@@ -31,13 +34,13 @@ public class userController {
     }
 
     @GetMapping("/welcomeUser")
-    @PreAuthorize("hasAuthority('user')")
     public String welcomeUser() {
         return "Welcome to User";
     }
 
     @PostMapping("/new")
     public String addNewUser(@RequestBody UserInfo userInfo) {
+
         return service.addUser(userInfo);
     }
 
@@ -62,6 +65,8 @@ public class userController {
         } else {
             throw new UsernameNotFoundException("invalid user request !");
         }
+
+
 
 
     }
