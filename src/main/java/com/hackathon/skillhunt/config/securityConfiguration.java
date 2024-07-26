@@ -66,9 +66,9 @@ public class securityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("api/users/new","api/users/authenticate").permitAll()
-                                .requestMatchers("api/**","api/jobPost/**")
-                                .authenticated()
+                        auth.requestMatchers("api/users/new","api/users/authenticate","api/jobPost/**").permitAll()
+//                                .requestMatchers("api/**")
+//                                .authenticated()
                 )
                 .sessionManagement(smc -> smc
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

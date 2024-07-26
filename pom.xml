@@ -79,6 +79,12 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/com.google.cloud.sql/postgres-socket-factory -->
 		<dependency>
 			<groupId>com.google.cloud.sql</groupId>
@@ -93,16 +99,29 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+<!--				<configuration>-->
+<!--					<excludes>-->
+<!--						<exclude>-->
+<!--							<groupId>org.projectlombok</groupId>-->
+<!--							<artifactId>lombok</artifactId>-->
+<!--						</exclude>-->
+<!--					</excludes>-->
+<!--				</configuration>-->
+			</plugin>
+
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+<!--				<version>3.4.1</version>-->
+
 				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
+					<verbose>true</verbose>
+					<changeLogFile>db/db.master.xml</changeLogFile>
+					<driver>org.postgresql.Driver</driver>
+					<contexts>local</contexts>
+					<promptOnNonLocalDatabase>true</promptOnNonLocalDatabase>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

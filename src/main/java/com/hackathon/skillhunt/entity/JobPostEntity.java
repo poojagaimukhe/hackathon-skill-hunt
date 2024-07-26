@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "createPost")
+@Table(name = "jobPost")
 public class JobPostEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

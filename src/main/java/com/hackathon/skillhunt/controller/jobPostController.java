@@ -22,7 +22,7 @@ public class jobPostController {
     private JobPostService jobPostService;
 
     @PostMapping("/createJobPost")
-    @PreAuthorize("hasAuthority('admin')")
+//    @PreAuthorize("hasAuthority('admin')")
     public String createJobPost(@RequestBody CreateJobPostDTO createJobPostDTO){
         String response = null;
         response = jobPostService.createJobPost(createJobPostDTO);
